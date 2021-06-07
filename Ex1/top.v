@@ -32,6 +32,9 @@ module blinds(
     
     wire   out;
          
-      assign out = func[2*a+b];
+      assign out = func[2*a+b]; //Bad implementation
+	// assign out = func[a+a+b]; //Better? (Still seems lazy though)
+	// assign out = func[b'ab];	//Probably optimal but the synatax is wrong - I'm looking to concanenate in binary here!
+	
 
 endmodule
