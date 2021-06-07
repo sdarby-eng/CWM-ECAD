@@ -23,7 +23,7 @@ module monitor (
 	input clk,
 	input rst,
 	input change,
-	inout on_off,
+	input on_off,
 	output[7:0] counter_out
     );
                     
