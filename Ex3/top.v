@@ -43,6 +43,10 @@ module monitor (
 	else
 	r<= r - 1;
 
+	//I need to find some way of getting r into counter_out here (but outside the if statement, which looks syntactically challenging. Unless if statements only support a single line after them...
+	//should r just be counter_out?
+	//If this is the case, r ought to be a wire, but r must be a register because it's in an always loop.
+
 	end
       
 endmodule

@@ -13,11 +13,11 @@
 module top_tb(
     );
     
-//Todo: Parameters
     //Parameters    
     parameter CLK_PERIOD = 10;
 
-//Todo: Regitsers and wires
+//Registers and wires
+//All the registers except err are used for the inputs and outputs of the module, err is used as a flag
 	reg clk;
     reg rst;
     reg change;
@@ -26,7 +26,8 @@ module top_tb(
     reg err;
     wire out;
 
-//Todo: Clock generation
+//Clock generation
+//This is taken from exercise 1 and 2, and so should work, though the speed is currently unknown
 	initial
     begin
        clk = 1'b0;
@@ -34,14 +35,16 @@ module top_tb(
          #(CLK_PERIOD/2) clk=~clk;
     end
 
-//Todo: User logic
+//User logic
+//This needs to be used to test my module - it will be added after I have a functioning testbench!
 	initial
 	begin
 
 	end
     
-//Todo: Finish test, check for success
-     //An initial block that ends the simulation, and declares success (if valid)
+//Finish test, check for success
+//An initial block that ends the simulation, and declares success (if valid)
+//This can only run if err=0 after the pause. This will only occur if all of the tests pass
      initial begin
         #50 
         if (err==0)
@@ -49,8 +52,8 @@ module top_tb(
         $finish;
       end
 
-//Todo: Instantiate counter module
-   //User's module
+//Instantiate counter module
+//This syntax might be horribly wrong...
     monitor top (
      .clk (clk),
      .rst (rst),
