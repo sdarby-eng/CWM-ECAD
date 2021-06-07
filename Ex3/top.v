@@ -24,29 +24,26 @@ module monitor (
 	input rst,
 	input change,
 	inout on_off,
-	output counter_out[7:0]
+	output[7:0] counter_out
     );
                     
     //Todo: add registers and wires, if needed
 	reg r; //HELP!
-
+	assign counter_out = r; //permanement pipe
     //Todo: add user logic
 
-	always @(posedge clk or posedge rst)
+	always @(posedge clk) //posedge rst not necessary
 	begin
-	if(rst)
-	r <= 0;
-	else if(!change)
-	pass; //This is probably invalid!
-	else if(on_off)
-	r<= r + 1;
-	else
-	r<= r - 1;
-
-	//I need to find some way of getting r into counter_out here (but outside the if statement, which looks syntactically challenging. Unless if statements only support a single line after them...
-	//should r just be counter_out?
-	//If this is the case, r ought to be a wire, but r must be a register because it's in an always loop.
-
+		if(rst)
+			r <= 0;
+		else if(change)
+			begin
+			if(on_off)
+				r<= r + 1;
+			else
+				r<= r - 1;
+			end
+		//else pass is implicit (but would actually cause errors if written out!)
 	end
       
 endmodule

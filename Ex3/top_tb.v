@@ -17,13 +17,13 @@ module top_tb(
     parameter CLK_PERIOD = 10;
 
 //Registers and wires
-//All the registers except err are used for the inputs and outputs of the module, err is used as a flag
+//All the registers except err are used for the inputs and outputs of the module, err is used as a flag //Wires for outputs, regs for anything that is being created (because it needs to be held outside of a block
 	reg clk;
     reg rst;
     reg change;
 	reg on_off;
-	reg counter_out[7:0];
     reg err;
+	wire [7:0] counter_out;
     wire out;
 
 //Clock generation
@@ -46,7 +46,7 @@ module top_tb(
 //An initial block that ends the simulation, and declares success (if valid)
 //This can only run if err=0 after the pause. This will only occur if all of the tests pass
      initial begin
-        #50 
+        #50 //This should probably be longer! Be careful!
         if (err==0)
           $display("***TEST PASSED! :) ***");
         $finish;
@@ -58,7 +58,8 @@ module top_tb(
      .clk (clk),
      .rst (rst),
      .on_off (on_off),
-     .change (change)
+     .change (change),
+	.counter_out (counter_out)	
      );
  
 endmodule 
