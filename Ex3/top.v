@@ -27,11 +27,9 @@ module monitor (
 	output[7:0] counter_out
     );
                     
-    //Todo: add registers and wires, if needed
-	reg r; //HELP!
+	reg r; 
 	assign counter_out = r; //permanement pipe
-    //Todo: add user logic
-
+ 
 	always @(posedge clk) //posedge rst not necessary
 	begin
 		if(rst)

@@ -55,90 +55,104 @@ module top_tb(
 
 		forever
 		begin
-		#CLK_PERIOD //Pause. Do I need to pause before every test to allow the clock to cycle???
+			//Call_RAND is designed to randomly call the counter a few times to ensure there are nonzero values of counter_out immediately before the test step. This is yet to be implemented
 
-		//Call_RAND is designed to randomly call the counter a few times to ensure there are nonzero values of counter_out immediately before the test step. This is yet to be implemented
+			//The first 4 cases test whether the counter resets whenever rst goes high
 
-		//The first 4 cases test whether the counter resets whenever rst goes high
-
-		//Case 100
-		//Call_RAND
-		rst=1; change=0; on_off=0;
-		if(counter_out!=0)
+			//Case 100
+			//Call_RAND
+			#CLK_PERIOD 
+			rst=1; change=0; on_off=0;
+			#CLK_PERIOD 
+			if(counter_out!=0)
 			begin
 				$display("***TEST FAILED! counter_out==%d, expected out=0 - it's a reset! 					***",counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//Case 101
-		//Call_RAND
-		rst=1; change=0; on_off=1;
-		if(counter_out!=0)
+			//Case 101
+			//Call_RAND
+			#CLK_PERIOD 
+			rst=1; change=0; on_off=1;
+			#CLK_PERIOD 
+			if(counter_out!=0)
 			begin
 				$display("***TEST FAILED! counter_out==%d, expected out=0 - it's a reset! 					***",counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//Case 110
-		//Call_RAND
-		rst=1; change=1; on_off=0;
-		if(counter_out!=0)
+			//Case 110
+			//Call_RAND
+			#CLK_PERIOD 
+			rst=1; change=1; on_off=0;
+			#CLK_PERIOD 
+			if(counter_out!=0)
 			begin
 				$display("***TEST FAILED! counter_out==%d, expected out=0 - it's a reset! 					***",counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//Case 111
-		//Call_RAND
-		rst=1; change=1; on_off=1;
-		if(counter_out!=0)
+			//Case 111
+			//Call_RAND
+			#CLK_PERIOD 
+			rst=1; change=1; on_off=1;
+			#CLK_PERIOD 
+			if(counter_out!=0)
 			begin
 				$display("***TEST FAILED! counter_out==%d, expected out=0 - it's a reset! 					***",counter_out);
-             err=1;
+		         err=1;
 			end
-		
-		//The next two tests ensure that the counter remains constant when change is low
+			
+			//The next two tests ensure that the counter remains constant when change is low
 
-		//Case 000
-		//Call_RAND
-		prev_counter_out=counter_out;
-		rst=0; change=0; on_off=0;
-		if(counter_out!=prev_counter_out)
+			//Case 000
+			//Call_RAND
+			#CLK_PERIOD 
+			prev_counter_out=counter_out;
+			rst=0; change=0; on_off=0;
+			#CLK_PERIOD 
+			if(counter_out!=prev_counter_out)
 			begin
 				$display("***TEST FAILED! counter_out==%d, prev_counter_out==%d - It should remain constant***",counter_out, prev_counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//Case 001
-		//Call_RAND
-		prev_counter_out=counter_out;
-		rst=0; change=0; on_off=1;
-		if(counter_out!=prev_counter_out)
+			//Case 001
+			//Call_RAND
+			#CLK_PERIOD 
+			prev_counter_out=counter_out;
+			rst=0; change=0; on_off=1;
+			#CLK_PERIOD 
+			if(counter_out!=prev_counter_out)
 			begin
 				$display("***TEST FAILED! counter_out==%d, prev_counter_out==%d - It should remain constant***",counter_out, prev_counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//The final two testts ensure that the counter counts up or down as appropriate
+			//The final two testts ensure that the counter counts up or down as appropriate
 
-		//Case 010
-		//Call_RAND
-		prev_counter_out=counter_out;
-		rst=0; change=1; on_off=0;
-		if(counter_out!=(prev_counter_out-1))
+			//Case 010
+			//Call_RAND
+			#CLK_PERIOD 
+			prev_counter_out=counter_out;
+			rst=0; change=1; on_off=0;
+			#CLK_PERIOD 
+			if(counter_out!=(prev_counter_out-1))
 			begin
 				$display("***TEST FAILED! counter_out==%d, prev_counter_out==%d - It should count down by one***",counter_out, prev_counter_out);
-             err=1;
+		         err=1;
 			end
 
-		//Case 011
-		//Call_RAND
-		prev_counter_out=counter_out;
-		rst=0; change=1; on_off=1;
-		if(counter_out!=(prev_counter_out+1))
+			//Case 011
+			//Call_RAND
+			#CLK_PERIOD 
+			prev_counter_out=counter_out;
+			rst=0; change=1; on_off=1;
+			#CLK_PERIOD 
+			if(counter_out!=(prev_counter_out+1))
 			begin
 				$display("***TEST FAILED! counter_out==%d, prev_counter_out==%d - It should count up by one***",counter_out, prev_counter_out);
-             err=1;
+		         err=1;
 			end
 
 		end
@@ -148,7 +162,7 @@ module top_tb(
 //An initial block that ends the simulation, and declares success (if valid)
 //This can only run if err=0 after the pause. This will only occur if all of the tests pass
      initial begin
-        #50 //This should probably be longer! Be careful!
+        #500 //This should probably be longer! Be careful!
         if (err==0)
           $display("***TEST PASSED! :) ***");
         $finish;
