@@ -44,8 +44,8 @@ initial begin
         $finish;
 end
 
-
-ColourConverter top(
+//THIS BIT FEELS ODD
+ColourConverter notTop(
     .clk (clk), 
     .enable (enable), 
     .colour (colour), 

@@ -21,18 +21,17 @@
 module ColourConverter(input clk,
 	input [2:0] colour,
 	input enable,
-	output reg [23:0] rgb
+	output wire [23:0] rgb
 	);
 
-	reg [23:0] rgb;
 
 //Instatiating the core
 rgbGen instance_name (
 	.clka(clk),
         .ena(enable),
-        .wea(wea),
+        .wea(1'b0),
         .addra(colour),
-        .dina(0),
+        .dina(24'b0),
         .douta(rgb)
 );
 
