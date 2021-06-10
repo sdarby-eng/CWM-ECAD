@@ -7,3 +7,16 @@
 // You need to write the whole file
 //////////////////////////////////////////////////////////////////////////////////
 
+
+module top_tb();
+
+	//Instantiation
+	    lightsSelector top (
+		.clk(clk),
+		.sel(sel),
+		.rst(rst),
+		.button(button),
+		.light(light)
+	    );
+
+endmodule
