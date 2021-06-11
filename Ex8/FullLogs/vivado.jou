@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2700185 on Thu Oct 24 18:45:48 MDT 2019
+# IP Build 2699827 on Thu Oct 24 21:16:38 MDT 2019
+# Start of session at: Fri Jun 11 10:01:38 2021
+# Process ID: 8901
+# Current directory: /home/centos/CWM-ECAD/Ex8
+# Command line: vivado -mode batch -source project.tcl
+# Log file: /home/centos/CWM-ECAD/Ex8/vivado.log
+# Journal file: /home/centos/CWM-ECAD/Ex8/vivado.jou
+#-----------------------------------------------------------
+source project.tcl
