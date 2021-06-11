@@ -1,0 +1,23 @@
+Q1:
+There were no errors or critical warnings
+
+Q2:
+The worst case hold time is 8.43 seconds (I think)
+
+Q3:
+The worst case setup time is >250ns
+
+Q4:
+6 LUT (1 LUT3, 1 LUT4, 2 LUT5, 2LUT6)
+
+Q5:
+Not sure where to find this one!
+
+Q6:
+4320 BRAM were used
+
+Q7:
+Not sure where to find this one either!
+
+Q8:
+It took 1 minute 13 secs to synthesize and 18 mins 38 secs to implement
